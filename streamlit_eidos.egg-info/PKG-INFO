@@ -1,15 +1,15 @@
 Metadata-Version: 2.1
 Name: streamlit-eidos
-Version: 0.1.0
+Version: 0.2.0
 Summary: Streamlit component for EIDOS framework
 Author: Oceanum
 Author-email: developers@oceanum.science
 Keywords: streamlit,oceanum,eidos,visualisation
-Requires-Python: >=3.7
+Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: streamlit>=1.2
-Requires-Dist: oceanum
+Requires-Dist: oceanum[eidos]>=0.1.0
 
 # streamlit-eidos
 

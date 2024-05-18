@@ -1,2 +1,2 @@
 streamlit
-oceanum
+oceanum[eidos]

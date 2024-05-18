@@ -13,15 +13,13 @@ pip install streamlit-eidos
 There is one component function `st_eidos` with function signature:
 
 ```
-component_value=st_eidos(eidos, height=500)
+component_value=st_eidos(eidos, height=500, events=['click'])
 ```
 
 ### Parameters
 
-    eidos : pydeck.Deck instance
-        The pydeck map to render.
-    key : str, default "deck_gl"
-        The key for the component. This must be unique for each map in the app.
+    eidos : oceanum.eidos.Eidos instance
+        The EIDOS scene to render.
     height : int, default 500
         The height of the map in pixels.
     events : list, default None
@@ -29,65 +27,12 @@ component_value=st_eidos(eidos, height=500)
         - 'click'
         - 'hover'
         - 'drag'
-    description : dict, default None
-        A dictionary with additional description components to overlay on the map
-        The keys are the position which can be one of 'top-right','top-left','bottom-right','bottom-left'
-        The values are the html elements to place in each position
-        Example {'top-right':<div>This is a nice map</div>}
-    configuration : dict, default None
-        A dictionary of configuration options for the map.
+    
 
 ### Returns
 
     component_value : dict
-        A dictionary containing the info dictionary of the event.
+        A dictionary containing the dictionary of the last message from the scene.
 
 ## Example
-
-```python
-import streamlit as st
-import pydeck as pdk
-import pandas as pd
-
-from streamlit_eidos import st_eidos
-
-
-st.write("## Example")
-
-chart_data = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4], columns=["lat", "lon"]
-)
-
-r = pdk.Deck(
-    initial_view_state=pdk.ViewState(
-        latitude=37.76, longitude=-122.4, zoom=11, pitch=50, height=600
-    ),
-    layers=[
-        pdk.Layer(
-            "HexagonLayer",
-            data=chart_data,
-            get_position="[lon, lat]",
-            radius=200,
-            elevation_scale=4,
-            elevation_range=[0, 1000],
-            pickable=True,
-            extruded=True,
-        ),
-        pdk.Layer(
-            "ScatterplotLayer",
-            data=chart_data,
-            get_position="[lon, lat]",
-            get_color="[200, 30, 0, 160]",
-            get_radius=200,
-        ),
-    ],
-    tooltip={
-        "html": "<b>Temperature:</b> {value} °C",
-        "style": {"backgroundColor": "steelblue", "color": "white"},
-    },
-)
-
-value = st_eidos(r,)
-
-st.write(value)
-```
+See examples/test.py for simple interactive example
