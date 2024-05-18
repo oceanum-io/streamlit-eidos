@@ -1,0 +1,14 @@
+.gitignore
+LICENSE
+MANIFEST.in
+Makefile
+README.md
+requirements.txt
+setup.py
+examples/test.py
+streamlit_eidos/__init__.py
+streamlit_eidos.egg-info/PKG-INFO
+streamlit_eidos.egg-info/SOURCES.txt
+streamlit_eidos.egg-info/dependency_links.txt
+streamlit_eidos.egg-info/requires.txt
+streamlit_eidos.egg-info/top_level.txt

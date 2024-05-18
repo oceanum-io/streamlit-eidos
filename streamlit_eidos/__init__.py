@@ -10,7 +10,7 @@ from oceanum.eidos import Eidos
 
 # Tell streamlit that there is a component called streamlit_eidos,
 # and that the code to display that component is in the "frontend" folder
-frontend_dir = (Path(__file__).parent / "frontend").absolute()
+frontend_dir = (Path(__file__).parent / "frontend" / "dist").absolute()
 _component_func = components.declare_component(
     "streamlit_eidos", path=str(frontend_dir)
 )
@@ -41,12 +41,12 @@ def st_eidos(eidos=None, height=500, events=None):
         raise ValueError("First argument must be an instance of Eidos")
 
     renderer = os.environ.get("EIDOS_RENDERER", "https://render.eidos.oceanum.io")
-    print(f"Using renderer at {renderer}")
 
     component_value = _component_func(
         key=eidos.id,
         height=height,
-        spec=eidos.model_dump(),
+        eidos=eidos.model_dump(),
+        spectype="spec",
         events=events if events else ["click"],
         renderer=renderer,
     )

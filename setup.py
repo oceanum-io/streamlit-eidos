@@ -14,7 +14,6 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=["streamlit_eidos"],
-    package_dir={"": "src"},
     include_package_data=True,
     python_requires=">=3.7",
     keywords=["streamlit", "oceanum", "eidos", "visualisation"],

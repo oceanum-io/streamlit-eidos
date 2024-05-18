@@ -21,7 +21,7 @@ function onRender(event) {
   if (!window.eidos) {
     window.eidos = {};
   }
-
+  Streamlit.setComponentValue = (value) => {
   const updateSpec = () => {
     const messageTarget = document.getElementById(key).contentWindow;
     if (spec) {
@@ -58,6 +58,7 @@ function onRender(event) {
   } else {
     updateSpec(spec, patch);
   }
+  Streamlit.setComponentReady();
 }
 
 // Render the component whenever python send a "render event"
